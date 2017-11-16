@@ -1,0 +1,27 @@
+#gridGontainer{
+    width:500px;
+    height:500px;
+    padding:10px;
+    margin:10px auto;
+    background-color: #DF5F4E;
+    border-radius: 10px;
+    position: relative;
+}
+
+.gridCell{
+    width:100px;
+    height:100px;
+    margin:10px;
+    background-color:#ffcccc;
+    border-radius: 6px;
+    position: absolute;
+}
+
+.numberCell{
+    font-family: Arial;
+    font-weight:bold;
+    font-size:60px;
+    text-align:center;
+    border-radius: 6px;
+    position:absolute;
+}

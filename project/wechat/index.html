@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>微信聊天生成器</title>
+        <meta name="TIM聊天生成器" content="CANVAS TIM 霍淇滨"/>
+        <link rel="stylesheet" type="text/css" href="TIMchat.css" />
+        <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="js/TIMchat.js"></script>
+        <style>
+            #canvas{
+                        background-image: url(img.jpg);  
+                        background-size: 100% 100%;  
+                        -moz-background-size: 100% 100%;  
+                        -webkit-background-size: 100% 100%;  
+            } 
+        </style>
+    </head>
+
+    <body style="background-color:#00cc99">
+        <div style="text-align:center;"><h1>微信聊天生成器</h1></div>
+        <div class="container" style="margin-top:50px;">
+            <div class="row"><!--第一行-->
+                <div class="col-lg-5" style="background-color:#BDBDD8;border-style:inset;padding:10px"><!--填写数据-->
+                    <p>提示：内容可以为空</p>
+                    <form role="form">
+                        <div class="form-group">
+                            <div>
+                                <div>
+                                    <label for="inputfile">我的头像</label>
+                                    <input type="file" onchange="previewFile1()" ><br/>
+                                    <img src="" height="100" alt="Image preview..." id="one">
+                                </div>    
+                                <div>
+                                    <label for="inputfile">对方头像</label>
+                                    <input type="file" onchange="previewFile2()"><br/>
+                                    <img src="" height="100" alt="Image preview..." id="two">
+                                </div>
+                            </div>
+                            <div class="input-group input-group-sm" id="id">
+                                <span class="input-group-addon">对方昵称</span>
+                                <input type="text" class="form-control" placeholder="hello world">                                    
+                            </div>
+                            <div>
+                                <div style="width:210px;float:right">
+                                    <div class="input-group input-group-sm chat" id="1">                                        
+                                        <input type="text" class="form-control" placeholder="hello world">    
+                                        <span class="input-group-addon">我</span>                                
+                                    </div>
+                                    <div class="input-group input-group-sm chat" id="2">   
+                                        <span class="input-group-addon">对方</span>                            
+                                        <input type="text" class="form-control" placeholder="hello world">
+                                    </div>
+                                    <div class="input-group input-group-sm chat" id="3">                                        
+                                        <input type="text" class="form-control" placeholder="hello world">
+                                        <span class="input-group-addon">我</span>
+                                    </div>
+                                    <div class="input-group input-group-sm chat" id="4"> 
+                                        <span class="input-group-addon">对方</span>                                   
+                                        <input type="text" class="form-control" placeholder="hello world">                                        
+                                    </div>
+                                    <div class="input-group input-group-sm chat" id="5">                                        
+                                        <input type="text" class="form-control" placeholder="hello world">
+                                        <span class="input-group-addon">我</span>
+                                    </div>
+                                    <div class="input-group input-group-sm chat" id="6">
+                                        <span class="input-group-addon">对方</span>                                    
+                                        <input type="text" class="form-control" placeholder="hello world">                                        
+                                    </div>
+                                </div>
+                                <div style="width:210px">
+                                    <div class="input-group input-group-sm time" id="101">
+                                        <span class="input-group-addon">时间</span>
+                                        <input type="text" class="form-control" placeholder="18：30">                                    
+                                    </div>
+                                    <div class="input-group input-group-sm time" id="102">   
+                                        <span class="input-group-addon">时间</span>                            
+                                        <input type="text" class="form-control" placeholder="18：30">                                        
+                                    </div>
+                                    <div class="input-group input-group-sm time" id="103">
+                                        <span class="input-group-addon">时间</span>
+                                        <input type="text" class="form-control" placeholder="18：30">
+                                    </div>
+                                    <div class="input-group input-group-sm time" id="104">  
+                                        <span class="input-group-addon">时间</span>                                  
+                                        <input type="text" class="form-control" placeholder="18：30">                                        
+                                    </div>
+                                    <div class="input-group input-group-sm time" id="105">
+                                        <span class="input-group-addon">时间</span>
+                                        <input type="text" class="form-control" placeholder="18：30">
+                                    </div>
+                                    <div class="input-group input-group-sm time" id="106">  
+                                        <span class="input-group-addon">时间</span>                                  
+                                        <input type="text" class="form-control" placeholder="18：30">                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <center><button type="button" class="btn btn-success" style="margin:1%" id="more">我需要更多对话框</button></center>
+                        </div>
+                    </form>
+                </div><!--填写数据-->
+            
+
+                <div class="col-lg-2">
+                    <center><button  class="btn btn-primary" id="make">生成图片</button></center><br/>
+                    <center><button  class="btn btn-warning" id="new">重新生成</button></center>
+                </div><!--按钮-->  
+
+                <div class="col-lg-5" style="background-color:#BDBDD8;border-style:outset;padding:10px;"><!--目标图片--> 
+                    <h3 style="text-align:center">主题界面显示</h3>
+                        <canvas style="border:solid;" id="canvas">
+
+                        </canvas>
+                </div><!--目标图片-->     
+            </div>
+        </div>
+        <img id="myimg" style="display:none;"/>
+        <img id="herimg" style="display:none;"/>
+        <footer>
+                <div style="text-align:center;"><p>微信聊天生成器 <small>--made by 霍淇滨</small></p></div>
+        </footer>
+        
+    </body>
+
+</html>
